@@ -1,0 +1,43 @@
+<template name="award_new">
+		<!-- Header -->
+		<div id="myModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+
+		    <div class="modal-content">
+    	   	<div class="modal-header">
+		  			<span class="glyphicon glyphicon-star-empty"></span> Nominate someone for FMYG
+	  			</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+							<form class="form-horizontal" role="form" id="nominate_form">
+						  	<div class="form-group">
+						    	<label for="details" class="col-sm-2 control-label">How did they impress?</label>
+						    	<div class="col-sm-10">
+						      	<textarea class="form-control" id="details" rows="6" placeholder="details"></textarea>
+						    	</div>
+						  	</div>
+						  	<div class="form-group">
+						    	<div class="col-sm-offset-2 col-sm-10">
+						      	<button type="submit" class="btn btn-primary" id="submit">Nominate!</button>
+						    	</div>
+						  	</div>
+							</form>
+						</div> <!-- Container -->
+					</div> <!-- Modal Body -->
+				</div> <!-- Modal-content -->
+		</div>
+	</div>
+	<!-- Show Modal on Load / on Hide navigate to '/' -->
+	<script type="text/javascript">
+		$(document).ready(function(){
+	  	// $('#myModal').modal({backdrop:'static'},'show')
+	  	$('#myModal')
+        .on('hidden.bs.modal', function() {
+            Router.go('/award');
+        })
+	  	$('#myModal').modal('show')
+
+		});
+		$
+	</script>
+</template>
