@@ -1,24 +1,27 @@
 Router.configure
 	layoutTemplate: 'layout'
 
-Router.map  ->
+Router.map ->
+	@route 'awards',
+		path: '/awards'
+		waitOn: ->
+			Meteor.subscribe 'awards'
+
 	@route 'home',
-		path: "/"
+		path: '/'
 
-	@route 'award',
-		path: "/award",
-    # waitOn: ->
-    #   Meteor.subscribe 'awards'
 
-	@route "award_new",
-    path: "/award/nominate"
-    # action: -> @render 'rfcNew', {to: 'modal'}
-    yieldTemplates:
-      'award_new':
-        to: 'modal'
-    template: 'award'
-    waitOn: ->
-      Meteor.subscribe 'awards'
+	@route 'award_new',
+		path: '/awards/new'
+		template: 'awards'
+		yieldTemplates:
+			'award_new':
+				'to':'modal'
+		waitOn: ->
+			Meteor.subscribe 'awards'
 
-  @route "profile_edit",
-  	path: "/profile/edit"
+	@route 'profile_edit',
+		path: '/profile/edit'
+		template: 'profile_edit'
+
+	@route 'test'

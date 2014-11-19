@@ -1,0 +1,37 @@
+Router.configure
+	layoutTemplate: 'layout'
+
+Router.map  ->
+	# @route 'home',
+	# 	path: "/"
+
+	@route "award",
+		path: "/award"
+    data: "test"
+      # posts: [
+      #   {
+      #     title: "Did you know that..."
+      #     text: "If you yelled for 8 years, 7 months and 6 days, you would have produced enough sound energy to heat up one cup of coffee."
+ #      #   }
+ #      #   {
+ #      #     title: "Hello World"
+ #      #     text: "Hi, i am new here!"
+ #      #   }
+ #      # ]
+ #    # waitOn: ->
+ #     # return Meteor.subscribe 'awards'
+	# @route "award_new",
+ #    path: "/award/nominate"
+ #    # action: -> @render 'rfcNew', {to: 'modal'}
+ #    yieldTemplates:
+ #      'award_new':
+ #        to: 'modal'
+ #    template: 'award'
+ #    # waitOn: ->
+ #    #   return Meteor.subscribe 'awards'
+ #    #   # Meteor.subscribe 'usersNames'
+
+ #  @route "profile_edit",
+ #  	path: "/profile/edit",
+ #    # waitOn: ->
+ #    #   return Meteor.subscribe 'usersNames'

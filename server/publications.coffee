@@ -1,2 +1,8 @@
 Meteor.publish 'awards', ()->
-	return Award.find({})
+	return Awards.find({})
+
+Meteor.publish 'directory', ->
+	return Meteor.users.find {},
+		fields:
+			email:true
+			profile: true
