@@ -1,6 +1,7 @@
 <Template name="layout">
  	{{> nav}}
 	<div class="container-fluid">
+		{{> errors}}
 		{{> yield}}
 	</div>
 	{{> yield region='modal'}}

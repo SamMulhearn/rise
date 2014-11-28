@@ -6,6 +6,7 @@ Router.map ->
 		path: '/awards'
 		waitOn: ->
 			Meteor.subscribe 'awards'
+			Meteor.subscribe 'awards-counts'
 
 	@route 'home',
 		path: '/'

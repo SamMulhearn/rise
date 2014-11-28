@@ -1,24 +1,32 @@
+@Awards = new Meteor.Collection('awards')
 
-@Awards = new Meteor.Collection("awards")
+Awards.allow
+	insert: (userId, doc) ->
+		if Meteor.user()
+			return doc
+		else
+			return false
 
-# x = ->
-# 	y = Meteor.users.find().fetch().map (it) ->
-# 		label: it.profile.fullName
-# 		value: it._id
-# 	return y
-# x = x()
-# console.log x
+Awards.deny
+	insert: (userId, doc) ->
+		#Update Awards counts
+		Meteor.setTimeout ->
+			Meteor.users.find().fetch().forEach (x) ->
+				awardcount = Awards.find(nominees:
+					$in: [x._id]).count()
+				Meteor.users.update  _id : x._id,
+							$set: 
+								'profile.awardCount':awardcount
+			, 1000
+		doc.createdAt = new Date
+		return false
 
-Meteor.methods
-	newAward: (award) ->
-		if !Meteor.user()
-			console.log 'User not logged in'
-			throw new Meteor.error 'Not logged in'
-
-		awardId = Award.insert
-			Reason: award.Reason
-			Nominee: award.Nominee
-			Nominator: Meteor.userId()
-			CreatedOn: new Date
-			
-		return awardId
+Awards.deny
+	insert: (userId, doc) ->
+		console.log doc
+		if doc.reason.length < 200
+			console.log doc.reason.length
+			Meteor.Error "KEBAB!", "KEBABAGE"
+			return true
+		else
+			return false

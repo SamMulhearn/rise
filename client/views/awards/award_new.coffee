@@ -1,46 +1,30 @@
 Template.award_new.events
-  'click button': (event) ->
-    event.preventDefault()
-    console.log 'fired'
-    # award =
-    #   Nominee: 'test'
-    #   Reason: event.target.details.value
+    'click button': (event) ->
+        event.preventDefault()
+        award =
+    	   nominees: $("input[type=checkbox]:checked").map(-> $(this).val()).toArray()
+    	   reason: $('textarea#reason').val()
+    	   nominator: Meteor.userId()
+        Awards.insert award
+        $('#myModal').modal('hide')        
+        # Awards.insert award, (error, id)->
+        #     if error
+        #         console.log error
+        #     else
+        #         $('#myModal').modal('hide')
 
-    # Meteor.call 'newAward', award
-    Router.go '/awards'
-
-
-
-Template.award_new.events
-	'change input[type=checkbox]': (e) ->
-		searchIDs = $("input[type=checkbox]:checked").map(->
-			$(this).val()).toArray()
-		console.log searchIDs		
-		x =  Meteor.users.find( '_id': {
-			$in: searchIDs},
-			fields:
-				'profile.fullName': 1
-		).fetch()
-		console.log x
-		x = x.map (it) ->
-			it.profile.fullName
-		$('#nomineelabel').text ( x.toString().replace(/,/g,', ') )
-
+    'change input[type=checkbox]': (e) ->
+        searchIDs = $("input[type=checkbox]:checked").map(->
+            $(this).val()).toArray()
+        x = Meteor.users.find( '_id': {
+            $in: searchIDs},
+            fields:
+                'profile.fullName': 1
+            ).fetch()
+        x = x.map (it) ->
+            it.profile.fullName
+        $('#nomineelabel').text ( x.toString().replace(/,/g,', ') )
 
 
-Template.name.rendered = ->
-  $("#form").parsley trigger: "change"
-  return
-
-Template.award_new.helpers
-  userList: () ->
-    Meteor.users.find().fetch().map (it) ->
-      label: it.profile.fullName
-      value: it._id
-
-
-# Meteor.registerHelper userList, ->
-# 	x = Meteor.users.find().fetch().map (it) ->
-# 			label: it.profile.fullName
-# 	  	value: it._id
-# 	return x()
+Template.award_new.rendered = () ->
+    $('#form').parsley()

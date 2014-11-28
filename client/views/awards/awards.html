@@ -1,0 +1,69 @@
+<template name="awards">
+	
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8">
+				{{> chart}}
+			</div>
+			<div class="col-md-4">
+				<a href="{{pathFor 'award_new'}}">
+					<button type="button" class="btn btn-default btn-outline btn-lg pull-right">
+						<span class="glyphicon glyphicon-star-empty"></span> Nominate Someone for FMYG
+					</button>
+				</a>
+			</div>
+		</div>
+		{{#each awards}}
+			{{> award_item}}
+		{{/each}}
+	</div>
+</template>
+
+<template name="chart">
+	<!-- <div id="chart_div" style="width: 500px; height: 200px;"></div> -->
+		<div id="chart_div" class="chart"></div>
+
+  <script type="text/javascript">
+
+  </script>
+</template>
+
+
+<template name="award_item">
+	<div class="col-md-4 col-sm-6">
+	  <div class="bs-callout bs-callout-purple">
+	    <h4 class="text-center">
+		    {{#each nominees}}
+		    	<button type="button" class="btn btn-default btn-sm btn-outline">{{userName this}}</button>
+		    {{/each}}
+			  </h4>
+			<p>{{reason}}</p>	  
+		  <em>
+		      <a title="" href="#">{{userName nominator}}</a>
+			</em>
+
+	  </div>
+	</div>
+</template>
+
+
+<template name="award_item_old">
+	<!-- <div class="row"> -->
+		<div class="col-md-12">
+			<!-- <div class="jumbotron"> -->
+				<blockquote>
+				<h3>
+				{{#each nominees}}
+					<span class="glyphicon glyphicon-star"></span> {{userName this}} <span class="glyphicon glyphicon-star"></span>
+				{{/each}}</h3>
+				<!-- Reason: {{reason}}<br><br>
+				<p class="text-muted">Nominator: {{userName nominator}}<br></p> -->
+
+				
+ 					 <p>{{reason}}</p>
+  					<footer>{{userName nominator}}</footer>
+				</blockquote>
+			<!-- </div> -->
+		</div>
+	<!-- </div> -->
+</template>

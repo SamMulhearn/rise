@@ -11,7 +11,6 @@
 	  			</div>
 					<div class="modal-body">
 						<div class="container-fluid">
-						{{> errors}}
 							<form role="form" id="form">
 								<div class="dropdown"> <p class="lead" id="nomineelabel"></p>
 							    <a id="nomineeDropdown" class="btn btn-default" data-toggle="dropdown" href="#">
@@ -23,7 +22,7 @@
 	  								{{#each userList}}
 							        <li>
 						            <label class="checkbox">
-					                <input type="checkbox" name="nominees" value="{{value}}">
+					                <input type="checkbox" name="nominees" value="{{value}}" data-parsley-mincheck="1" data-parsley-validate-if-empty data-parsley-trigger="change" data-parsley-error-message="You need to select a nominee!" data-parsley-errors-container="#nomineelabel">
 					                {{label}} <small><br><em>{{email}}</em></small>
 						            </label>
 							        </li>
@@ -32,7 +31,7 @@
 								</div>
 								<div class="form-group">
 									<label for="reason">Reason</label>
-									<textarea id="reason" class="form-control" rows="6" placeholder="Tell everyone why they're awesome!"></textarea>
+									<textarea id="reason" class="form-control" rows="6" placeholder="They're awesome, but why?" data-parsley-trigger="change" data-parsley-minlength="200" data-parsley-maxlength="600" data-parsley-validation-threshold="1" data-parsley-validate-if-empty data-parsley-minlength-message = "Come on! You need to enter at least a 200 caracters!"></textarea>
 								</div>
 								<button type="button" class="btn btn-default" id="submit">Shout it!</button>
 							</form>

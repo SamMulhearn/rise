@@ -4,5 +4,13 @@ Meteor.publish 'awards', ()->
 Meteor.publish 'directory', ->
 	return Meteor.users.find {},
 		fields:
-			email:true
+			emails:true
 			profile: true
+
+Meteor.publish 'awards-counts', ->
+	return Awards.find({})
+	# Meteor.users.find().fetch().map (it)->
+	# 	'fullName': it.profile.fullName
+	# 	'awardsCount': Awards.find(
+	# 		nominees:
+	# 			$in: [it._id]).count()
