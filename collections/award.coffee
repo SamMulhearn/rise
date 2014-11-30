@@ -1,12 +1,5 @@
 @Awards = new Meteor.Collection('awards')
 
-Awards.allow
-	insert: (userId, doc) ->
-		if Meteor.user()
-			return doc
-		else
-			return false
-
 Awards.deny
 	insert: (userId, doc) ->
 		#Update Awards counts
@@ -18,15 +11,34 @@ Awards.deny
 							$set: 
 								'profile.awardCount':awardcount
 			, 1000
-		doc.createdAt = new Date
+		doc.createdAt = new Date #Add CreatedAt field to new documents
 		return false
 
-Awards.deny
-	insert: (userId, doc) ->
-		console.log doc
-		if doc.reason.length < 200
-			console.log doc.reason.length
-			Meteor.Error "KEBAB!", "KEBABAGE"
-			return true
-		else
-			return false
+Meteor.methods
+	insertAward: (award)->
+		if !Meteor.user
+			throw new Meteor.Error 'Not Logged In', 'You must be logged in to create a new FMYG nomination'
+		if award.reason.length < 100
+			throw new Meteor.Error 'Reason not long enough', 'You must provide at least 100 characters for the reason for the nomination'
+		if award.nominees.length < 1
+			throw new Meteor.Error 'No Nominees', 'You must select at least one nominee for your nomination'
+		
+		award.createdAt = new Date #Add CreatedAt field to new awards
+
+		Meteor.setTimeout ->
+			Meteor.users.find().fetch().forEach (x) ->
+				awardcount = Awards.find(nominees:
+					$in: [x._id]).count()
+				Meteor.users.update  _id : x._id,
+							$set: 
+								'profile.awardCount':awardcount
+			, 1000
+
+
+		Awards.insert award, (error, docId)->
+			if !error
+			else
+				throw new Meteor.Meteor.Error 'Insert Failed', error
+
+
+		

@@ -5,13 +5,11 @@ Template.award_new.events
     	   nominees: $("input[type=checkbox]:checked").map(-> $(this).val()).toArray()
     	   reason: $('textarea#reason').val()
     	   nominator: Meteor.userId()
-        Awards.insert award
-        $('#myModal').modal('hide')        
-        # Awards.insert award, (error, id)->
-        #     if error
-        #         console.log error
-        #     else
-        #         $('#myModal').modal('hide')
+        Meteor.call 'insertAward', award, (error, result)->
+            if !error
+                $('#myModal').modal('hide')
+            else
+                throwError error.reason
 
     'change input[type=checkbox]': (e) ->
         searchIDs = $("input[type=checkbox]:checked").map(->
