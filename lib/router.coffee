@@ -1,12 +1,12 @@
 Router.configure
 	layoutTemplate: 'layout'
+	loadingTemplate: 'loading'
 
 Router.map ->
 	@route 'awards',
 		path: '/awards'
 		waitOn: ->
 			Meteor.subscribe 'awards'
-			Meteor.subscribe 'awards-counts'
 
 	@route 'home',
 		path: '/'
