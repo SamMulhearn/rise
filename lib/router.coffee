@@ -8,6 +8,8 @@ Router.map ->
 		template: 'awards'
 		waitOn: ->
 			Meteor.subscribe 'awards'
+		data: ->
+			Meteor.subscribe 'awards'
 
 	@route 'home',
 		path: '/'
@@ -27,3 +29,5 @@ Router.map ->
 		template: 'profile_edit'
 
 	@route 'test'
+
+

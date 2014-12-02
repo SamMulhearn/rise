@@ -23,6 +23,8 @@ Template.award_new.events
             it.profile.fullName
         $('#nomineelabel').text ( x.toString().replace(/,/g,', ') )
 
-
 Template.award_new.rendered = () ->
-    $('#form').parsley()
+    $("#myModal").on "hidden.bs.modal", ->
+      Router.go "/awards"
+      return
+    $("#myModal").modal "show"
