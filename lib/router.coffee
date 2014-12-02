@@ -5,6 +5,7 @@ Router.configure
 Router.map ->
 	@route 'awards',
 		path: '/awards'
+		template: 'awards'
 		waitOn: ->
 			Meteor.subscribe 'awards'
 
