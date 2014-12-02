@@ -37,11 +37,17 @@
 		    	<button type="button" class="btn btn-default btn-sm btn-outline">{{userName this}}</button>
 		    {{/each}}
 			  </h4>
-			<p>{{reason}}</p>	  
-		  <em>
-		      <a title="" href="#">{{userName nominator}}</a>
-			</em>
-
+			<p>{{reason}}</p>
+			<div class="row">
+				<div class="col-md-6 col-sm-6">
+					<p class="text-muted">
+				 		<a title="" href="#">{{userName nominator}}</a>
+					</p>
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<p class="pull-right text-muted">{{timeAgo createdAt}}</p>
+				</div>
+			</div>
 	  </div>
 	</div>
 </template>
