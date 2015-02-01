@@ -5,8 +5,14 @@ Template.awards.helpers
 			sort:
 				'createdAt': -1
 
+
+Template.awards.rendered = ->
+  $container = $('#awardsContainer')
+  # $container.imagesLoaded ->
+  $container.masonry itemSelector: '.awardsItem'
+
 			
-Template.awards.rendered = () ->
+Template.chart.rendered = () ->
 		
 	drawChart = ->
 		data = new google.visualization.DataTable()
@@ -29,6 +35,7 @@ Template.awards.rendered = () ->
 	      title: ""
 	    legend: "none"
 	    colors: ['purple']
+	   	backgroundColor: { fill:'transparent' }
 
 	  chart = new google.visualization.BarChart(document.getElementById("chart_div"))
 	  chart.draw data, options

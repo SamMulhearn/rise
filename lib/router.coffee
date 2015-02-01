@@ -28,6 +28,10 @@ Router.map ->
 		path: '/profile/edit'
 		template: 'profile_edit'
 
+	@route 'skills',
+		path: '/skills'
+		template: 'skills'
+
 	@route 'test'
 
 

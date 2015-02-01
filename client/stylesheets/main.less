@@ -14,6 +14,10 @@ body {
 // 	height: 200px;
 // }
 
+
+
+
+
 .jumbotron {
 	-webkit-background-clip: border-box;
 	-webkit-background-origin: padding-box;
@@ -109,12 +113,19 @@ ul.dropdown-menu-form {
 
 
 .btn-outline {
-color: #563d7c;
-background-color: transparent;
-border-color: #563d7c;
-margin: 5px;
+	color: #563d7c;
+	background-color: transparent;
+	border-color: #563d7c;
+	margin: 5px;
 }
 
+
+.btn-white {
+	color: #ffffff;
+	background-color: transparent;
+	border-color: #ffffff;
+	margin: 5px;
+}
 
 
 /* Side notes for calling out things
@@ -158,7 +169,22 @@ margin: 5px;
   border-top: 1px solid;
   border-bottom: 1px solid;
   border-radius: 5px;
-  height: 300px;
-  overflow: scroll;
+  // height: 300px;
+  // overflow-y: scroll;
+  overflow: auto;
+	background-image: linear-gradient(180deg, rgb(2, 0, 49) 60px, rgb(109, 51, 83) 100%);
+	color: rgb(255, 255, 255);
+
 }
 
+.bs-callout-purple:after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: url(bs-docs-masthead-pattern.png) repeat center center;
+	opacity: .4;
+}

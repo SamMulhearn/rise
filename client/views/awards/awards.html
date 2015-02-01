@@ -13,9 +13,11 @@
 				</a>
 			</div>
 		</div>
-		{{#each awards}}
-			{{> award_item}}
-		{{/each}}
+		<div id="awardsContainer">
+			{{#each awards}}
+				{{> award_item}}
+			{{/each}}
+		</div>
 	</div>
 </template>
 
@@ -30,11 +32,11 @@
 
 
 <template name="award_item">
-	<div class="col-md-4 col-sm-6">
+	<div class="col-md-4 col-sm-6 awardsItem">
 	  <div class="bs-callout bs-callout-purple">
 	    <h4 class="text-center">
 		    {{#each nominees}}
-		    	<button type="button" class="btn btn-default btn-sm btn-outline">{{userName this}}</button>
+		    	<button type="button" class="btn btn-default btn-sm btn-white">{{userName this}}</button>
 		    {{/each}}
 			  </h4>
 			<p>{{reason}}</p>
