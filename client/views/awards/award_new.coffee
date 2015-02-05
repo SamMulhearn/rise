@@ -7,7 +7,8 @@ Template.award_new.events
     	   nominator: Meteor.userId()
         Meteor.call 'insertAward', award, (error, result)->
             if !error
-                $('#myModal').modal('hide')
+                # $('#myModal').modal('hide')
+                Router.go '/awards'
             else
                 throwError error.reason
 
@@ -23,8 +24,8 @@ Template.award_new.events
             it.profile.fullName
         $('#nomineelabel').text ( x.toString().replace(/,/g,', ') )
 
-Template.award_new.rendered = () ->
-    $("#myModal").on "hidden.bs.modal", ->
-      Router.go "/awards"
-      return
-    $("#myModal").modal "show"
+# Template.award_new.rendered = () ->
+#     $("#myModal").on "hidden.bs.modal", ->
+#       Router.go "/awards"
+#       return
+#     $("#myModal").modal "show"

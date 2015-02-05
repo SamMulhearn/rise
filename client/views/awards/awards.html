@@ -1,6 +1,6 @@
 <template name="awards">
 	
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
 				{{> chart}}
@@ -22,17 +22,12 @@
 </template>
 
 <template name="chart">
-	<!-- <div id="chart_div" style="width: 500px; height: 200px;"></div> -->
-		<div id="chart_div" class="chart"></div>
-
-  <script type="text/javascript">
-
-  </script>
+	<div id="chart_div" class="chart"></div>
 </template>
 
 
 <template name="award_item">
-	<div class="col-md-4 col-sm-6 awardsItem">
+	<div class="col-md-4 awardsItem">
 	  <div class="bs-callout bs-callout-purple">
 	    <h4 class="text-center">
 		    {{#each nominees}}
@@ -41,7 +36,7 @@
 			  </h4>
 			<p>{{reason}}</p>
 			<div class="row">
-				<div class="col-md-6 col-sm-6">
+				<div class="col-md-6">
 					<p class="text-muted">
 				 		<a title="" href="#">{{userName nominator}}</a>
 					</p>

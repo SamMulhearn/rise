@@ -17,10 +17,10 @@ Router.map ->
 
 	@route 'award_new',
 		path: '/awards/new'
-		template: 'awards'
-		yieldTemplates:
-			'award_new':
-				'to':'modal'
+		template: 'award_new'
+		# yieldTemplates:
+		# 	'award_new':
+		# 		'to':'modal'
 		waitOn: ->
 			Meteor.subscribe 'awards'
 

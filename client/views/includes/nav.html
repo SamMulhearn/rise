@@ -26,6 +26,6 @@
 </template>
 
 <template name="navItems">
-	<li {{activeIfTemplateIs 'awards'}}><a href="{{pathFor 'awards'}}">FMYG!</a></li>
+	<li {{activeIfTemplateIs 'awards'}} {{activeIfTemplateIs 'award_new'}}><a href="{{pathFor 'awards'}}">FMYG!</a></li>
 	<li {{activeIfTemplateIs 'skills'}}><a href="{{pathFor 'skills'}}">Skills</a></li>
 </template>

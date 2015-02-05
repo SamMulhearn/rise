@@ -9,11 +9,13 @@ Template.awards.helpers
 Template.awards.rendered = ->
   $container = $('#awardsContainer')
   # $container.imagesLoaded ->
+  # $container.masonry columnWidth: 200
   $container.masonry itemSelector: '.awardsItem'
 
+
+	
 			
-Template.chart.rendered = () ->
-		
+Template.chart.rendered = () ->		
 	drawChart = ->
 		data = new google.visualization.DataTable()
 		data.addColumn 'string', 'Nominee'
