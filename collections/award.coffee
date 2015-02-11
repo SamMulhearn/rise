@@ -13,14 +13,14 @@ Meteor.methods
 		
 		award.createdAt = new Date #Add CreatedAt field to new awards
 
-		Meteor.setTimeout ->
-			Meteor.users.find().fetch().forEach (x) ->
-				awardcount = Awards.find(nominees:
-					$in: [x._id]).count()
-				Meteor.users.update  _id : x._id,
-							$set: 
-								'profile.awardCount':awardcount
-			, 1000
+		# Meteor.setTimeout ->
+		# 	Meteor.users.find().fetch().forEach (x) ->
+		# 		awardcount = Awards.find(nominees:
+		# 			$in: [x._id]).count()
+		# 		Meteor.users.update  _id : x._id,
+		# 					$set: 
+		# 						'profile.awardCount':awardcount
+		# 	, 1000
 
 
 		Awards.insert award, (error, docId)->

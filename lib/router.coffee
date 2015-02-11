@@ -1,6 +1,7 @@
 Router.configure
 	layoutTemplate: 'layout'
 	loadingTemplate: 'loading'
+	progressDelay : 100
 
 Router.map ->
 	@route 'awards',
@@ -13,6 +14,10 @@ Router.map ->
 
 	@route 'home',
 		path: '/'
+		data: ->
+			Meteor.subscribe 'awards'
+		waitOn: ->
+			Meteor.subscribe 'awards'
 
 
 	@route 'award_new',
@@ -21,8 +26,8 @@ Router.map ->
 		# yieldTemplates:
 		# 	'award_new':
 		# 		'to':'modal'
-		waitOn: ->
-			Meteor.subscribe 'awards'
+		# waitOn: ->
+		# 	Meteor.subscribe 'awards'
 
 	@route 'profile_edit',
 		path: '/profile/edit'
